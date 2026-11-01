@@ -1,0 +1,55 @@
+/**
+ * Configuración global del bot.
+ * Modifica estos valores según tu proyecto.
+ */
+export default {
+  // Nombre de tu bot
+  nombreBot: 'MI-BOT-MD',
+
+  // Prefijo de comandos (usa '' para que no requiera prefijo)
+  prefijo: '.',
+
+  // Número del owner/dueño del bot (con código de país, sin +, sin espacios)
+  owner: ['51900000000'],
+
+  // Número que se usará para vincular el bot vía código de emparejamiento.
+  // Déjalo vacío ('') para que el bot lo pida por consola al iniciar.
+  numeroBot: '',
+
+  // Carpeta donde se guardará la sesión
+  sessionFolder: './session',
+
+  // Archivo donde se guarda la base de datos local (usuarios, chats, etc.)
+  dbFile: './database.json',
+
+  // Tiempo de vida del caché de metadata de grupos (ms)
+  groupCacheTTL: 60 * 1000,
+
+  // Pausa ante error 429 (rate limit) en ms
+  rateLimitPause: 90 * 1000,
+
+  // Reintentos máximos de reconexión y tope de espera
+  maxReconnectAttempts: 8,
+  maxReconnectDelay: 5 * 60 * 1000,
+
+  // Respuesta automática con AMILCAR AI (motor local: sin Internet, sin API, sin Python).
+  // El owner puede activarla o desactivarla desde WhatsApp con .autoia on / .autoia off
+  autoRespuesta: {
+    activa: true,
+    privados: true, // responde a cualquier texto en chats privados
+    grupos: true, // en grupos solo si mencionan al bot o responden a un mensaje suyo
+    cooldownSegundos: 4, // pausa por usuario entre respuestas (evita spam)
+    maxCaracteres: 500, // ignora mensajes más largos
+    responderSiNoSabe: true, // false = se queda en silencio cuando no entiende
+    motor: 'auto', // 'auto' = modelo neuronal y, si duda, motor nativo | 'neural' | 'native'
+    umbralConfianza: 0.5, // confianza mínima (0 a 1) para aceptar la respuesta del modelo neuronal
+  },
+
+  // Bienvenida y despedida automática en grupos.
+  // Usa {mention} para etiquetar al usuario y {grupo} para el nombre del grupo.
+  bienvenida: {
+    activa: true,
+    mensajeEntrada: '👋 ¡Bienvenido/a {mention} a *{grupo}*!\nLee las reglas y disfruta tu estadía 🎉',
+    mensajeSalida: '😢 {mention} salió de *{grupo}*. ¡Hasta pronto!',
+  },
+}
